@@ -11,7 +11,7 @@ export function useActions() {
       if (act({ t: 'quest_taken', q: id })) { close(); toast(`«${QBY[id].title}» в журнале`); }
     },
     drop(id: string) {
-      if (act({ t: 'quest_dropped', q: id })) { close(); toast('Квест отложен, слот свободен'); }
+      if (act({ t: 'quest_dropped', q: id })) { close(); toast('Квест отложен: слот свободен, отметки сохранены'); }
     },
     reopen(id: string) {
       if (act({ t: 'quest_reopened', q: id })) toast('Квест снова в работе');

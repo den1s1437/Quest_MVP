@@ -3,10 +3,12 @@
 import { QBY, RULES } from '@/lib/content';
 import { ROMAN } from '@/lib/ui';
 import { useGame } from './GameProvider';
+import { useActions } from './useActions';
 import { TaskList } from './TaskList';
 
 export function Journal() {
   const { D, open } = useGame();
+  const { drop } = useActions();
   const free = Array.from({ length: Math.max(0, RULES.slots - D.prog.length) }, (_, k) => D.prog.length + k);
   return (
     <div className="journal">
@@ -22,6 +24,7 @@ export function Journal() {
             {ready
               ? <button className="btn rust" type="button" onClick={() => open({ q: id, submit: '1' })}>Сдать квест</button>
               : <button className="btn pghost" type="button" disabled>Сдать квест · отметь все задачи</button>}
+            <button className="btn ghost small" type="button" style={{ color: 'var(--pink)', borderColor: '#C2A877' }} onClick={() => drop(id)}>Отложить · отметки сохранятся</button>
           </div>
         );
       })}
