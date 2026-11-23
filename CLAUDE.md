@@ -53,7 +53,7 @@ npm run build:proto    # собирает прототип
 ## 4. Стек и архитектура
 
 - **Next.js** (App Router) + TypeScript, деплой на **Vercel**.
-- **Supabase**: Postgres и вход для одного пользователя по magic link на почту Дениса.
+- **Supabase**: Postgres и вход для одного пользователя. С 23.11.2026 вход **по одной почте без письма и кода** (решение Дениса, риск принят): `/api/auth/email` сверяет почту с `ALLOWED_EMAIL` и входит внутренним паролем `LOGIN_SECRET`. Почта игрока — den1s1437@proton.me.
 - **Движок** импортируется как модуль: `engine/src/engine.ts`. Контент — JSON из `content/`, читается при сборке, никакой CMS.
 - **Стили:** глобально подключить `design/tokens.css` и `design/components.css`, классы — как в прототипе. CSS-фреймворк не нужен.
 
